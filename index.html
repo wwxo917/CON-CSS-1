@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenless zone</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #040708;
+        }
+
+        header {
+            background-color: #040708;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        nav {
+            background-color: #000fb3;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        nav button {
+            background-color: white;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        nav button:hover {
+            background: rgb(2,0,36);
+            background: linear-gradient(300deg, rgba(2,0,36,1) 0%, rgba(9,115,121,1) 0%, rgba(0,212,255,1) 100%);
+        }
+
+        section {
+            padding: 5px;
+            margin: 10px auto;
+            max-width: 900px;
+            background: rgb(63,94,251);
+            background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: auto;
+            height: 630px;
+            text-align: center;
+        }
+       
+        section h2 {
+            color: #6200ea;
+        }
+
+        iframe {
+            width: 390px;
+            height: 240px;
+            border: none;
+        }
+
+        .back-to-nav button{
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: white;
+            background-color: #040708;
+            width: 100px;
+            height: 30px;
+
+        }
+
+        .back-to-nav a {
+            color: #3700b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-to-nav a:hover {
+            text-decoration: underline;
+        }
+        .fondo-div{
+            background-image: url('descarga.jpg'); /* Ruta de la imagen */
+            background-size: cover; /* Ajusta la imagen para cubrir todo el `div` */
+            background-position: center; /* Centra la imagen */
+            
+            height: 695px; /* Define la altura del `div` */
+            width: 1034px; /* Ancho completo de la pantalla */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente (opcional) */
+            align-items: center; /* Centra verticalmente (opcional) */
+            color: black; /* Asegúrate de que el texto sea legible */
+        }
+        #grad1 {
+            background-color: red; /* For browsers that do not support gradients */
+            background-image: linear-gradient(to right, #1B1464, #6A0572,#FFC857);
+            height: 640px;
+        }
+        #grad2{
+            background: rgb(79,20,152);
+            background: linear-gradient(211deg, rgba(79,20,152,1) 0%, rgba(8,9,0,1) 100%);
+            height: 640px;
+            padding: auto;
+        }
+        #grad3{
+            background: rgb(2,0,36);
+            background: linear-gradient(13deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+            height: 640px;
+        }
+        #grad4{
+            background: rgb(255,162,0);
+            background: linear-gradient(20deg, rgba(255,162,0,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 84%);
+            height: 640px;
+        }
+        .carousel-o {
+        width: 50%;
+        max-width: 370px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        height: 250px;
+        left: 20%;
+        transform: translateX(-50%);
+        }
+
+        .carousel-track-o {
+        display: flex;
+        animation: scroll 30s infinite linear;
+        }
+
+        .carousel-image {
+        min-width:100%;
+        }
+        .carousel-p {
+        width: 40%;
+        max-width: 550px;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: relative;
+        height: 190px;
+        left: 20%;
+        transform: translateX(-50%);
+        background-color: #040708;
+        }
+
+        .carousel-track-p {
+        display: flex;
+        animation: scroll 30s infinite linear;
+        }
+        /* Animación personalizada */
+        @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        16.6% {
+            transform: translateX(-100%);
+        }
+        33.2% {
+            transform: translateX(-200%);
+        }
+        49.8% {
+            transform: translateX(-300%);
+        }
+        66.4% {
+            transform: translateX(-400%);
+        }
+        83% {
+            transform: translateX(-500%);
+        }
+        100% {
+            transform: translateX(-500%); /* Se queda en la posición de la última imagen */
+        }
+        }
+        textarea{
+            color: #f0f0f0;
+            background: rgb(79,20,152);
+            background: linear-gradient(211deg, rgba(79,20,152,1) 0%, rgba(8,9,0,1) 100%);
+            
+        }
+        .calculator {
+            border: 1px solid #ccc;
+            padding: 40px;
+            border-radius: 10px;
+            background-color: #1B1464;
+        }
+        #display {
+            width: 300px;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: skyblue;
+        }
+        .button {
+            width: 70px;
+            height: 60px;
+            font-size: 24px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #e0e0e0;
+            border: none;
+            border-radius: 5px;
+        }
+        .button:active {
+            background-color: #ccc;
+        }
+        .row {
+            display: flex;
+        }
+        #personajes section{
+            margin: 20px auto;
+            max-width: 1000px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: auto;
+            border: none;
+            height: 470px;
+        }
+            
+        .fondo-negro{
+            background-color: #040708;
+            padding: 5px;
+            margin: 10px auto;
+            max-width: 800px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: auto;
+            height: 630px;
+            text-align: center;
+            padding-left:30px;
+        }
+        #noticias h2{
+            color: #ccc;
+        }
+        .back-to-navi button{
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            color: black;
+            background-color: white;
+            width: 100px;
+            height: 20px;
+
+        }
+        #noticias td{
+            padding: 10px;
+        }
+        .fondo-cal{
+
+            margin: 10px auto;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            height: 600px;
+            text-align: center;
+        }
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: left;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            text-align: center;
+        }
+        .footer-contact a,
+        .footer-social a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+        .footer-bottom {
+            text-align: center;
+            padding: 10px 0;
+            border-top: 1px solid #444;
+            font-size: 12px;
+        }
+        #Tier iframe{
+            height: 430px;
+            width: 649px;
+        }
+        #Tier h2{
+            color: #040708;
+        }
+        #Tier a{
+            color: #040708;
+        }
+        .imagen-logo{
+            width: auto;
+            height: 50px; 
+        }
+       
+/* Contenedor principal */
+.gran2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #040708;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Wrapper principal */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Sección del Carrusel */
+.side-carousel {
+    flex: 1;
+    height: 100%;
+    overflow: hidden; /* Oculta el contenido fuera del contenedor */
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    flex-direction: column;
+    animation: infiniteScroll 10s linear infinite; /* Animación continua */
+}
+
+.side-carousel img {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Animación para un desplazamiento vertical continuo */
+@keyframes infiniteScroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
+/* Sección Central */
+.main-content {
+    flex: 2;
+    padding: 20px;
+    background: rgb(171,139,226);
+background: radial-gradient(circle, rgba(171,139,226,1) 0%, rgba(148,187,233,1) 100%);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.main-content h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.main-content p {
+    font-size: 1.1em;
+    color: #555;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i>Zenless Zone Zero</i></h1>
+    </header>
+
+    <nav>
+        <img src="logo.1e072ee.PNG" class="imagen-logo">
+        <button onclick="location.href='#inicio'">Inicio</button>
+        <button onclick="location.href='#personajes'">Personajes</button>
+        <button onclick="location.href='#noticias'">Noticias</button>
+        <button onclick="location.href='#Tier'">Tier List</button>
+        <button onclick="location.href='#ambientes'">Ambientes</button>
+        <button onclick="location.href='#calculadora'">Calculadora</button>
+    </nav>
+    <center><div class="fondo-div">
+    <div id="inicio">
+        <br>
+        <br>
+        <div class="carousel-o">
+            <div class="carousel-track-o">
+              <img src="game.JPG" alt="Imagen 1" class="carousel-image">
+              <img src="game1.JPG" alt="Imagen 2" class="carousel-image">
+              <img src="game3.JPG" alt="Imagen 3" class="carousel-image">
+              <img src="game2.JPG" alt="Imagen 4" class="carousel-image">
+              <img src="game4.JPG" alt="Imagen 5" class="carousel-image">
+              <img src="game.JPG" alt="Imagen 1 (duplicada)" class="carousel-image">
+            </div>
+        </div>
+        <table>
+            <tr>
+                <td><iframe id="para-pre" src="https://www.youtube.com/embed/KGOynaQoofc?si=schmKfNyDvwPwfKn"></iframe></td>
+                <td><img src="nada" alt="" width="140" height="05"></td>
+                <td><textarea rows="10" cols="40" style="overflow:auto; resize:none;">Zenless Zone Zero es un videojuego de rol de acción de fantasía urbana desarrollado por miHoYo, publicado por miHoYo en China continental y en todo el mundo por HoYoverse para las plataformas Android, iOS, Microsoft Windows y PlayStation 5. Se lanzó el 4 de julio de 2024.
+                
+                El juego toma lugar en un paraíso futurista postapocalíptico conocido como New Eridu. Entidades conocidas como etéreos viajaron al mundo humano desde portales llamados Hollow, causando estragos y aniquilando a la mayoría de la población. Sin embargo, un grupo de supervivientes formó un bastión contra ellos, después de haber sobrevivido al ataque extrayendo la tecnología y los recursos de los invasores.
+                </textarea></td>
+            </tr>
+        </table>
+        
+        <div class="back-to-nav">
+            <button onclick="location.href='#'">Menu</button>
+        </div>
+    </div>
+    </div> </center>
+    <div id="grad2">
+    <section id="personajes">
+        <h2>Personajes</h2>
+        <section>
+    <center>
+        <table>
+            
+            <tr>
+                <td><img src="anton.PNG" alt="nuevo" width="180" height="270"></td>
+                <td><textarea rows="8" cols="40" style="overflow:auto; resize:none;">Todos los personajes jugables están asociados a una facción. Los agentes poseen uno de los cinco atributos: eléctrico, éter, fuego, hielo o físico. Además, cada agente adopta uno de los cinco estilos de combate: anomalía, ataque, defensa, apoyo o aturdimiento.</textarea></td>
+                <td><img src="anby.PNG" alt="nuevo" width="180" height="270"></td>
+            </tr>
+
+        </table>
+        <div class="carousel-p">
+                        <div class="carousel-track-p">
+                          <img src="per2.PNG" alt="Imagen 1" class="carousel-image">
+                          <img src="agente11.PNG" alt="Imagen 2" class="carousel-image">
+                          <img src="per1.PNG" alt="Imagen 3" class="carousel-image">
+                          <img src="soukaku.PNG" alt="Imagen 4" class="carousel-image">
+                          <img src="lucy1.PNG" alt="Imagen 5" class="carousel-image">
+                          <img src="per2.PNG" alt="Imagen 1 (duplicada)" class="carousel-image">
+            </div>
+        </div>
+        </center>
+        </section>
+        <center><div class="back-to-nav">
+            <button onclick="location.href='#'">Menu</button>
+        </div>
+    </center>
+    </div>
+    </section>
+    <div id="grad1">
+    <div class="fondo-negro"
+    <section id="noticias">
+        <h2>Noticias</h2>
+        <table>
+            <tr>
+                <td><iframe src="https://www.youtube.com/embed/ckAybuAU0YU?si=KUZFZWfbFlQ7KGpK"></iframe></td>
+                <td><center><textarea rows="8" cols="40" style="overflow:auto; resize:none;">La marca global de entretenimiento interactivo HoYoverse ha anunciado hoy que la versión 1.4 «Tormenta de estrellas» del ARPG de fantasía urbana, Zenless Zone Zero, llegará oficialmente a PS5 Pro, PS5, PC y dispositivos móviles el 18 de diciembre (UTC +8). En la próxima versión, el modo de juego del panel en la trama principal ha tenido una gran transformación que integra combates y exploración inmersivos. Además, Hoshimi Miyabi y Asaba Harumasa, los tan esperados agentes de la División N.º 6, harán su aparición en escena, desvelando el capítulo más emocionante del año. A todo esto se suman las mejoras significativas del modo de juego «Sombras perdidas» de la Cavidad Cero y los nuevos escenarios del Puerto Elpis y el Rincón de la Reverberación. No podemos olvidar también que, después de la actualización, los jugadores podrán obtener al agente de grado S Asaba Harumasa de manera gratuita.</textarea></center></td>
+            </tr>
+            <tr>
+                <td bgcolor="white">Video de la nueva version</td>
+                <td bgcolor="white">Nuevo personaje 1.4</td>
+            </tr>
+            <tr>
+                <td><textarea rows="8" cols="40" style="overflow:auto; resize:none;">Todos los personajes jugables están asociados a una facción. Los agentes poseen uno de los cinco atributos: eléctrico, éter, fuego, hielo o físico. Además, cada agente adopta uno de los cinco estilos de combate: anomalía, ataque, defensa, apoyo o aturdimiento.</textarea></td>
+                <td><center><a href="https://youtu.be/MSncQJ-pRbM?si=KMax36bH-b_G6yT9" target="_blank">  <img src="miyabi1.PNG" alt="new" width="210" height="190" ></a></center></td>
+            </tr>
+        </table>
+        <center><div class="back-to-navi">
+            <button onclick="location.href='#'">Menu</button>
+        </div></center>
+    </section>
+    </div>
+    </div>
+    <div id="grad4">
+    <section id="Tier">
+        <h2>Tier List ZZZ</h2>
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSCsmF9iD7aC64W7rltsf9n2oiy2Dzi-8R4vw7BH6n0t6ThgH1pw2uVFftZYA5zH78YyTBilnEzz-Xy/pubhtml?gid=0&range=A1:J6" width="300" height="500"></iframe><br>
+        <a href="https://game8.co/games/Zenless-Zone-Zero/archives/435685" target="_blank">Tier List Actualizada</a><br>
+        <a href="https://game8.co/games/Zenless-Zone-Zero/archives/460436" target="_blank">Herramienta para crear equipos</a>
+       
+        <center><div class="back-to-nav">
+            <button onclick="location.href='#'">Menu</button>
+        </div></center>
+    </section>
+    </div>
+    <div class="gran2" id="ambientes">
+        <div class="content-wrapper">
+            <!-- Carrusel Izquierdo -->
+            <div class="side-carousel left-carousel">
+                <div class="carousel-track">
+                    <img src="portada1.JPEG">
+                    <img src="portada2.JPEG">
+                    <img src="portada3.JPEG">
+                    <img src="portada4.JPEG">
+                    <img src="portada1.JPEG">
+                    <img src="portada2.JPEG">
+                    <img src="portada3.JPEG">
+                    <img src="portada4.JPEG">
+                    
+                </div>
+            </div>
+    
+            <!-- Sección Central -->
+            <div class="main-content">
+                <h2>Ambientes</h2>
+                <p>El juego se desarrolla en un mundo futurista que ha sido devastado por desastres conocidos como Hollows . Estas zonas son anomalías que han aparecido en el mundo, causando destrucción y caos. La humanidad ahora vive en ciudades seguras como New Eridu , que es considerada la última ciudad del mundo.</p>
+                <div class="tier-list">
+                    <!-- Puedes incluir cualquier contenido aquí -->
+                    <p><b>Nuevo Eridu: La Última Ciudad</b><br> Nueva Eridu es el núcleo central del juego y un refugio para la humanidad en medio del caos.</p>
+                    <p><b>Los Huecos: Dimensiones Caóticas</b><br> Los Huecos son áreas peligrosas y misteriosas donde ocurren los combates principales del juego.</p>
+                    <p><b>Inspiración visual</b><br> Los desarrolladores de HoYoverse se inspiraron en:</p>
+                    <ul>
+                        <li><b>Ciberpunk : </b>Influencias de ciudades futuristas como las de Blade Runner o Cyberpunk 2077 .</li>
+                        <li><b>Animes Urbanos : </b>Escenarios similares a los vistos en animes como Akira o Ghost in the Shell .</li>
+                        <li><b>Caos Postapocalíptico : </b>Ambientes con ruinas y tecnologías abandonadas.</li>
+                    </ul>
+                    <center><div class="back-to-nav">
+                        <button onclick="location.href='#'">Menu</button>
+                    </div></center>
+                </div>
+            </div>
+    
+            <!-- Carrusel Derecho -->
+            <div class="side-carousel right-carousel">
+                <div class="carousel-track">
+                    <img src="portada5.JPEG" alt="Imagen 5">
+                    <img src="portada6.JPEG" alt="Imagen 6">
+                    <img src="portada7.JPEG" alt="Imagen 7">
+                    <img src="portada8.JPEG" alt="Imagen 8">
+                    <img src="portada5.JPEG" alt="Imagen 5">
+                    <img src="portada6.JPEG" alt="Imagen 6">
+                    <img src="portada7.JPEG" alt="Imagen 7">
+                    <img src="portada8.JPEG" alt="Imagen 8">
+                </div>
+                
+            </div>
+        </div>
+       
+    </div>
+    <div id="grad1">
+        <div class="fondo-cal">
+        <section id="calculadora">
+        <h2>Calculadora</h2>
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <div class="row">
+                <button class="button" onclick="clearDisplay()">C</button>
+                <button class="button" onclick="appendToDisplay('/')">/</button>
+                <button class="button" onclick="appendToDisplay('*')">*</button>
+                <button class="button" onclick="deleteLast()">←</button>
+            </div>
+            <div class="row">
+                <button class="button" onclick="appendToDisplay('7')">7</button>
+                <button class="button" onclick="appendToDisplay('8')">8</button>
+                <button class="button" onclick="appendToDisplay('9')">9</button>
+                <button class="button" onclick="appendToDisplay('-')">-</button>
+            </div>
+            <div class="row">
+                <button class="button" onclick="appendToDisplay('4')">4</button>
+                <button class="button" onclick="appendToDisplay('5')">5</button>
+                <button class="button" onclick="appendToDisplay('6')">6</button>
+                <button class="button" onclick="appendToDisplay('+')">+</button>
+            </div>
+            <div class="row">
+                <button class="button" onclick="appendToDisplay('1')">1</button>
+                <button class="button" onclick="appendToDisplay('2')">2</button>
+                <button class="button" onclick="appendToDisplay('3')">3</button>
+                <button class="button" onclick="calculateResult()">=</button>
+            </div>
+            <div class="row">
+                <button class="button" style="width: 145px;" onclick="appendToDisplay('0')">0</button>
+                <button class="button" onclick="appendToDisplay('.')">.</button>
+            </div>
+        </div>
+        
+        
+        <script>
+            function appendToDisplay(value) {
+                document.getElementById('display').value += value;
+            }
+        
+        
+            function clearDisplay() {
+                document.getElementById('display').value = '';
+            }
+        
+        
+            function deleteLast() {
+                var display = document.getElementById('display').value;
+                document.getElementById('display').value = display.slice(0, -1);
+            }
+        
+        
+            function calculateResult() {
+                var display = document.getElementById('display').value;
+                try {
+                    document.getElementById('display').value = eval(display);
+                } catch (error) {
+                    document.getElementById('display').value = 'Error';
+                }
+            }
+        </script>
+       <center><div class="back-to-nav">
+        <button onclick="location.href='#'">Menu</button>
+    </div></center>
+        </section>
+        
+    </div>
+    
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            
+            <div class="footer-logo">
+                <h2>Mi Página Web</h2>
+                <br>
+                <img src="logo.1e072ee.PNG" width="100" height="100">
+            </div>
+
+            
+            <div class="footer-contact">
+                <h3>Contacto</h3>
+                <p>Correo: brandonmayd2000@gmail.com"</p><br>
+                    <p>Teléfono: <a href="tel:+1234567890">+1234567890</a></p><br>
+            </div>
+
+            
+            <div class="footer-social">
+                <h3>Redes sociales</h3>
+                <a href="https://zenless.hoyoverse.com/es-es/main" target="_blank">
+                    <i>Pagina Oficial</i> <br><br>
+                </a>
+                <a href="https://x.com/intent/follow?screen_name=ZZZ_ES&original_referer=https%3A%2F%2Ftwitter.com%2FZZZ_ES" target="_blank">
+                    <i>Twitter</i> <br><br> 
+                </a>
+                <a href="https://www.youtube.com/@ZZZ_Official" target="_blank">
+                    <i>Youtube</i> <br>
+                </a>
+            </div>
+
+            
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Brandon Maydana. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
